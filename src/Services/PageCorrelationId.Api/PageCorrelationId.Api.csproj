@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\PageCorrelationId.Api.Utils\PageCorrelationId.Api.Utils.csproj" />
+	  <ProjectReference Include="..\PageCorrelationId.Application\PageCorrelationId.Application.csproj" />
+	  <ProjectReference Include="..\PageCorrelationId.Infrastructure\PageCorrelationId.Infrastructure.csproj" />
+	</ItemGroup>
+</Project>

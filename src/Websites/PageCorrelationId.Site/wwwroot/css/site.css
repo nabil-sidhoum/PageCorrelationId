@@ -1,0 +1,107 @@
+/* ─────────────────────────────────────────────
+   site.css — styles globaux partagés
+   ───────────────────────────────────────────── */
+
+/* ── Reset / Base ─────────────────────────── */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: #f0f2f5;
+    color: #222;
+}
+
+/* ── Header ───────────────────────────────── */
+header {
+    background: #1a1a2e;
+    color: #fff;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+header a {
+    color: #a0c4ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+/* ── CID Badge ────────────────────────────── */
+.cid-badge {
+    background: #16213e;
+    border: 1px solid #a0c4ff;
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: .8rem;
+    font-family: monospace;
+    color: #a0c4ff;
+}
+
+/* ── Layout principal ─────────────────────── */
+main {
+    padding: 32px 40px;
+}
+
+/* ── Card ─────────────────────────────────── */
+.card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #1a1a2e;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+/* ── Bouton ───────────────────────────────── */
+button {
+    background: #1a1a2e;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: .95rem;
+}
+
+button:hover {
+    background: #16213e;
+}
+
+/* ── Pre / JSON output ────────────────────── */
+pre {
+    background: #1a1a2e;
+    color: #a0c4ff;
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: .85rem;
+    min-height: 60px;
+}
+
+/* ── Label ────────────────────────────────── */
+.label {
+    font-size: .75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+/* ── Header title ─────────────────────────── */
+.header-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+}

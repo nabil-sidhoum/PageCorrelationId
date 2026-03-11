@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] — Correlation Demo</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <header>
+        <span class="header-title">🔗 Correlation Demo</span>
+        <a href="/Dashboard">Dashboard 1</a>
+        <a href="/Dashboard2">Dashboard 2</a>
+        @if (ViewBag.PageCid != null)
+        {
+            <span class="cid-badge">CID de la page : @ViewBag.PageCid</span>
+        }
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <script src="~/lib/jquery/4.0.0/dist/jquery.min.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

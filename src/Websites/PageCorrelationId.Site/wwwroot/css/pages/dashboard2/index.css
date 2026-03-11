@@ -1,0 +1,35 @@
+/* ─────────────────────────────────────────────
+   dashboard2/index.css — styles spécifiques Dashboard 2
+   ───────────────────────────────────────────── */
+
+.dashboard2-cid {
+    font-family: monospace;
+    font-size: 1.1rem;
+    color: #7c3aed;
+    font-weight: 700;
+}
+
+.card--accent {
+    border-top: 4px solid #7c3aed;
+}
+
+.card--info-purple {
+    background: #f5f3ff;
+    border: 1px solid #c4b5fd;
+}
+
+.card--info-purple h3 {
+    color: #7c3aed;
+}
+
+.btn--purple {
+    background: #7c3aed;
+}
+
+.btn--purple:hover {
+    background: #6d28d9;
+}
+
+pre.pre--purple {
+    color: #c4b5fd;
+}

@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "Dashboard 1";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/pages/dashboard/index.css" asp-append-version="true" />
+}
+
+<div class="card">
+    <h2>📊 Dashboard 1</h2>
+    <div class="label">Correlation ID de cette page</div>
+    <p class="dashboard-cid">@ViewBag.PageCid</p>
+    <p>
+        Chaque ouverture de cette page génère un <strong>nouveau CID</strong>.
+        Les appels AJAX ci-dessous réutilisent ce même CID via le cookie <code>cid</code>.
+    </p>
+    <button id="btn-load-stats">⚡ Appel AJAX → GetStats</button>
+</div>
+
+<div class="card">
+    <div class="label">Réponse de l'API (JSON)</div>
+    <pre id="result">En attente d'un appel AJAX…</pre>
+</div>
+
+<div class="card card--info">
+    <h3>🔍 Comment ça marche ?</h3>
+    <ol>
+        <li>Le navigateur ouvre <code>GET /Dashboard</code></li>
+        <li>Le middleware génère un <strong>nouveau CID</strong> et pose le cookie <code>cid</code></li>
+        <li>Le controller lit <code>HttpContext.Items["SiteCorrelationId"]</code></li>
+        <li>Lors du clic, le navigateur envoie <code>Sec-Fetch-Mode: cors</code> (pas <code>navigate</code>) et renvoie automatiquement le cookie <code>cid</code> (même origine) — aucun JS nécessaire</li>
+        <li>Le middleware lit le cookie et <strong>ne régénère pas</strong> de CID</li>
+        <li>Le <code>DelegatingHandler</code> injecte <code>X-Correlation-ID</code> dans l'appel API</li>
+        <li>L'API retourne le même CID dans sa réponse</li>
+    </ol>
+</div>
+
+@section Scripts {
+    <script src="~/js/dashboard/index.js" asp-append-version="true"></script>
+}
