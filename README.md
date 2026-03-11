@@ -67,32 +67,32 @@ Ce projet démontre comment propager automatiquement un **Correlation ID métier
       │  GET /Dashboard                  │                            │
       │  Sec-Fetch-Mode: navigate        │                            │
       │ ───────────────────────────────► │                            │
-      │                         ┌────────┴────────┐                  │
-      │                         │  Site Middleware  │                  │
-      │                         │  Nouveau CID ✨  │                  │
-      │                         │  Cookie: cid=... │                  │
-      │                         └────────┬────────┘                  │
+      │                         ┌────────┴────────┐                   │
+      │                         │  Site Middleware│                   │
+      │                         │  Nouveau CID ✨ │                   │
+      │                         │  Cookie: cid=...│                   │
+      │                         └────────┬────────┘                   │
       │ ◄──────────── Set-Cookie: cid=.. │                            │
       │                                  │                            │
       │  GET /Dashboard/GetStats (AJAX)  │                            │
       │  Cookie: cid=<même guid>         │                            │
       │ ───────────────────────────────► │                            │
-      │                         ┌────────┴────────┐                  │
-      │                         │  Site Middleware  │                  │
-      │                         │  Réutilise CID ♻️ │                  │
-      │                         └────────┬────────┘                  │
-      │                         ┌────────┴──────────────┐            │
-      │                         │ DelegatingHandler      │            │
-      │                         │ X-Correlation-ID: ...  │            │
-      │                         └────────┬──────────────┘            │
-      │                                  │  X-Correlation-ID: <guid> │
-      │                                  │ ─────────────────────────►│
+      │                         ┌────────┴────────┐                   │
+      │                         │  Site Middleware  │                 │
+      │                         │  Réutilise CID ♻️ │                 │
+      │                         └────────┬────────┘                   │
+      │                         ┌────────┴──────────────┐             │
+      │                         │ DelegatingHandler     │             │
+      │                         │ X-Correlation-ID: ... │             │
+      │                         └────────┬──────────────┘             │
+      │                                  │  X-Correlation-ID: <guid>  │
+      │                                  │ ─────────────────────────► │
       │                                  │                   ┌────────┴───────┐
-      │                                  │                   │ Api Middleware  │
+      │                                  │                   │ Api Middleware │
       │                                  │                   │ Lit le header  │
       │                                  │                   │ Log + Items    │
       │                                  │                   └────────┬───────┘
-      │                                  │  X-Correlation-ID: <guid> │
+      │                                  │  X-Correlation-ID: <guid>  │
       │ ◄──────────────────────────────────────────────────────────── │
 ```
 
