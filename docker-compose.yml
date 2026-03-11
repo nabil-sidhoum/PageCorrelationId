@@ -1,0 +1,24 @@
+services:
+  api:
+    build:
+      context: ./src
+      dockerfile: Services/PageCorrelationId.Api/Dockerfile
+    container_name: pagecorrelationid-api
+    ports:
+      - "5001:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - WebsiteUrl=http://site:8080
+
+  site:
+    build:
+      context: ./src
+      dockerfile: Websites/PageCorrelationId.Site/Dockerfile
+    container_name: pagecorrelationid-site
+    ports:
+      - "5101:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ApiSettings__BaseUrl=http://api:8080
+    depends_on:
+      - api

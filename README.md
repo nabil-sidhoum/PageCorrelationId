@@ -170,6 +170,18 @@ Le `SiteCorrelationIdDelegatingHandler` est enregistré **une seule fois** sur l
 ### Prérequis
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [Docker](https://www.docker.com/products/docker-desktop) *(optionnel)*
+
+### Avec Docker (recommandé)
+
+```bash
+docker-compose up --build
+```
+
+- Site MVC → **`http://localhost:5101`**
+- API → **`http://localhost:5001`**
+
+### Sans Docker
 
 ### Configuration
 
