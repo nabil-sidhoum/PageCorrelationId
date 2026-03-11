@@ -4,6 +4,7 @@
 
 ### Traçabilité métier entre un front ASP.NET Core MVC et une Web API
 
+[![Build & Tests](https://github.com/nabil-sidhoum/PageCorrelationId/actions/workflows/build.yml/badge.svg)](https://github.com/nabil-sidhoum/PageCorrelationId/actions/workflows/build.yml)
 [![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/download/dotnet/8.0)
 [![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-MVC_+_Web_API-512BD4?logo=dotnet&logoColor=white)](https://learn.microsoft.com/aspnet/core)
 [![Architecture](https://img.shields.io/badge/Architecture-Clean_Architecture-blue)](https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/common-web-application-architectures)
@@ -67,32 +68,32 @@ Ce projet démontre comment propager automatiquement un **Correlation ID métier
       │  GET /Dashboard                  │                            │
       │  Sec-Fetch-Mode: navigate        │                            │
       │ ───────────────────────────────► │                            │
-      │                         ┌────────┴────────┐                   │
-      │                         │  Site Middleware│                   │
-      │                         │  Nouveau CID ✨ │                   │
-      │                         │  Cookie: cid=...│                   │
-      │                         └────────┬────────┘                   │
+      │                         ┌────────┴────────┐                  │
+      │                         │  Site Middleware  │                  │
+      │                         │  Nouveau CID ✨  │                  │
+      │                         │  Cookie: cid=... │                  │
+      │                         └────────┬────────┘                  │
       │ ◄──────────── Set-Cookie: cid=.. │                            │
       │                                  │                            │
       │  GET /Dashboard/GetStats (AJAX)  │                            │
       │  Cookie: cid=<même guid>         │                            │
       │ ───────────────────────────────► │                            │
-      │                         ┌────────┴────────┐                   │
-      │                         │  Site Middleware  │                 │
-      │                         │  Réutilise CID ♻️ │                 │
-      │                         └────────┬────────┘                   │
-      │                         ┌────────┴──────────────┐             │
-      │                         │ DelegatingHandler     │             │
-      │                         │ X-Correlation-ID: ... │             │
-      │                         └────────┬──────────────┘             │
-      │                                  │  X-Correlation-ID: <guid>  │
-      │                                  │ ─────────────────────────► │
+      │                         ┌────────┴────────┐                  │
+      │                         │  Site Middleware  │                  │
+      │                         │  Réutilise CID ♻️ │                  │
+      │                         └────────┬────────┘                  │
+      │                         ┌────────┴──────────────┐            │
+      │                         │ DelegatingHandler      │            │
+      │                         │ X-Correlation-ID: ...  │            │
+      │                         └────────┬──────────────┘            │
+      │                                  │  X-Correlation-ID: <guid> │
+      │                                  │ ─────────────────────────►│
       │                                  │                   ┌────────┴───────┐
-      │                                  │                   │ Api Middleware │
+      │                                  │                   │ Api Middleware  │
       │                                  │                   │ Lit le header  │
       │                                  │                   │ Log + Items    │
       │                                  │                   └────────┬───────┘
-      │                                  │  X-Correlation-ID: <guid>  │
+      │                                  │  X-Correlation-ID: <guid> │
       │ ◄──────────────────────────────────────────────────────────── │
 ```
 
